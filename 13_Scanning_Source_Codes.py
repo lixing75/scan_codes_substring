@@ -1,8 +1,4 @@
 import streamlit as st
-import datetime
-import pandas as pd
-from datetime import date
-from supabase import create_client, Client
 from io import StringIO
 import re
 
@@ -13,14 +9,8 @@ st.set_page_config(
 st.title("Scanning for Substring using regular expression")
 
 
-def convertDate(r):
-	newDate = pd.to_datetime(r)
-	newdate=newDate.strftime('%Y/%m/%d')
-	
-	return newdate
-
 def initLayout():
-    FILE_TYPES = ["log","rtf"]
+    FILE_TYPES = ["log","rtf", "java","sql"]
     substringCheck = "substring\([^,]*,'[^',\s]*'\)"
     substringCheck1 = "select substring\(\'.*\'\s+from\s+\'.*\'\)"
     substringCheck2 = 'select substring\(\'.*\'\s+from\s+\'\S*\\"*.*\\"*\S*\'\s+for\s+\'\S+\'\)'
